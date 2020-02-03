@@ -46,6 +46,7 @@ matrix:
       env: DB=mysqli MOODLE_BRANCH=MOODLE_33_STABLE
 
 before_install:
+  - export MOODLE_VERSION=$(echo "$MOODLE_BRANCH" | cut -d'_' -f 2)
   - echo ${TRAVIS_PHP_VERSION:0:3}
   - echo $DB
   - echo "$MOODLE_VERSION"
