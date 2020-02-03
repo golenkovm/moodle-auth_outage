@@ -46,6 +46,9 @@ matrix:
       env: DB=mysqli MOODLE_BRANCH=MOODLE_33_STABLE
 
 before_install:
+  - echo ${TRAVIS_PHP_VERSION:0:3}
+  - echo $DB
+  - echo "$MOODLE_VERSION"
   - if [ ${TRAVIS_PHP_VERSION:0:3} == "7.2" ] && [ $DB == "pgsql" ] && [[ "$MOODLE_VERSION" -gt 38 || "$MOODLE_VERSION" == "master" ]] ; then
       sudo /etc/init.d/postgresql stop;
       sudo /etc/init.d/postgresql start 9.5;
